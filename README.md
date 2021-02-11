@@ -4,3 +4,11 @@ The Minecraft Server Status Bot is a Discord bot designed to display the status 
 
 The bot makes a request via the JSON API at https://mcsrvstat.us with a given Minecraft server address. The values from the response are displayed on a Discord channel from where the .status command was used.
 
+## Commands:
+* .help
+* .ping
+* .set
+* .status
+
+## How to use:
+Set the server address by using `.set <address>`. 
