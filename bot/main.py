@@ -33,7 +33,7 @@ async def server_status(ctx):
         data = response.json()
 
         if data['port'] == '':
-            await ctx.send(f'Invalid server address (%s).')
+            await ctx.send(f"Invalid server address (%s)." % (client.address))
         else:
             if 'hostname' in data:
                 server_name = data['hostname']
