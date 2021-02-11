@@ -51,7 +51,7 @@ async def server_status(ctx):
                 embedVar.add_field(name="Port", value=data['port'], inline=True)
                 embedVar.add_field(name="Online", value="%s / %s" % (data['players']['online'], data['players']['max']), inline=True)
                 if 'list' in data['players']:
-                    embedVar.add_field(name="Players", value=data['players']['list'], inline=False)
+                    embedVar.add_field(name="Players", value=', '.join(data['players']['list']), inline=False)
                 await ctx.send(embed=embedVar)
 
 client.run(token)
