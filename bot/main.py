@@ -7,7 +7,7 @@ command_prefix = "."
 client = commands.Bot(command_prefix=command_prefix)
 token = os.getenv("DISCORD_BOT_TOKEN")
 
-client.address = ""
+address = ""
 
 @client.event
 async def on_ready():
@@ -20,20 +20,20 @@ async def ping(ctx):
 
 @client.command(name="set")
 async def set_server_address(ctx, arg):
-    client.address = arg
+    address = arg
     await ctx.send(f"Server address set.")
 
 @client.command(name="status")
 async def server_status(ctx):
-    if client.address == "":
+    if address == "":
         await ctx.send(f"Server address not set. Use .set <address>.")
     else:
-        url = ''.join(['https://api.mcsrvstat.us/2/', client.address])
+        url = ''.join(['https://api.mcsrvstat.us/2/', address])
         response = requests.get(url=url)
         data = response.json()
 
         if data['port'] == '':
-            await ctx.send(f"Invalid server address (%s)." % (client.address))
+            await ctx.send(f"Invalid server address (%s)." % (address))
         else:
             if 'hostname' in data:
                 server_name = data['hostname']
