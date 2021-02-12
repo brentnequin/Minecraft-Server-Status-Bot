@@ -45,7 +45,7 @@ async def server_status(ctx, arg):
                 if 'list' in data['players']:
                     embedVar.add_field(name="Players", value=', '.join(data['players']['list']), inline=False)
                 await ctx.send(embed=embedVar)
-    except discord.ext.commands.errors.MissingRequiredArgument:
+    except commands.errors.MissingRequiredArgument:
         await ctx.send(f"Please provide a server address: .set <address>.")
         
 
