@@ -17,7 +17,7 @@ async def ping(ctx):
     await ctx.send(f"🏓 Pong with {str(round(client.latency, 2))}")
 
 @client.command(name="status")
-async def server_status(ctx, arg):
+async def server_status(ctx, arg=None):
     if arg == None:
         await ctx.send(f"Please provide a server address: .set <address>.")
     else:
