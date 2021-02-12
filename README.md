@@ -1,4 +1,4 @@
-# Minecraft-Server-Status-Bot
+# Minecraft Server Status Bot
 
 The Minecraft Server Status Bot is a Discord bot designed to display the status of a Minecraft server. Use the bot in your Discord server [here](https://discord.com/api/oauth2/authorize?client_id=809205063330693171&permissions=2048&scope=bot).
 
