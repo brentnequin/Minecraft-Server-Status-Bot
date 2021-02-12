@@ -7,7 +7,6 @@ The bot makes a request via the JSON API at https://mcsrvstat.us with a given Mi
 ## Commands:
 * `.help`
 * `.ping`
-* `.set`
 * `.status`
 
 ## How to use:
