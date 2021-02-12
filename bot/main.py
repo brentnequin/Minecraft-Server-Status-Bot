@@ -18,7 +18,9 @@ async def ping(ctx):
 
 @client.command(name="status")
 async def server_status(ctx, arg):
-    try:
+    if arg == None:
+        await ctx.send(f"Please provide a server address: .set <address>.")
+    else:
         address = arg
         url = ''.join(['https://api.mcsrvstat.us/2/', address])
         response = requests.get(url=url)
@@ -45,8 +47,5 @@ async def server_status(ctx, arg):
                 if 'list' in data['players']:
                     embedVar.add_field(name="Players", value=', '.join(data['players']['list']), inline=False)
                 await ctx.send(embed=embedVar)
-    except:
-        await ctx.send(f"Please provide a server address: .set <address>.")
         
-
 client.run(token)
