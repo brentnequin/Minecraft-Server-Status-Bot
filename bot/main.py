@@ -18,10 +18,8 @@ async def ping(ctx):
 
 @client.command(name="status")
 async def server_status(ctx, arg):
-    address = arg
-    if address == "":
-        await ctx.send(f"Please provide a server address: .set <address>.")
-    else:
+    try:
+        address = arg
         url = ''.join(['https://api.mcsrvstat.us/2/', address])
         response = requests.get(url=url)
         data = response.json()
@@ -47,5 +45,8 @@ async def server_status(ctx, arg):
                 if 'list' in data['players']:
                     embedVar.add_field(name="Players", value=', '.join(data['players']['list']), inline=False)
                 await ctx.send(embed=embedVar)
+    except discord.ext.commands.errors.MissingRequiredArgument:
+        await ctx.send(f"Please provide a server address: .set <address>.")
+        
 
 client.run(token)
