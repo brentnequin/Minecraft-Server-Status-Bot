@@ -9,10 +9,10 @@ token = os.getenv("DISCORD_BOT_TOKEN")
 
 @client.event
 async def on_ready():
-    await client.change_presence(status = discord.Status.idle, activity = discord.Game("Listening to .help"))
+    await client.change_presence(status=discord.Status.idle)
     print("I am online")
 
-@client.command()
+@client.command(name="ping", help="Ping the bot")
 async def ping(ctx):
     await ctx.send(f"🏓 Pong with {str(round(client.latency, 2))}")
 
