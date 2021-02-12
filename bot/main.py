@@ -7,8 +7,6 @@ command_prefix = "."
 client = commands.Bot(command_prefix=command_prefix)
 token = os.getenv("DISCORD_BOT_TOKEN")
 
-address = ""
-
 @client.event
 async def on_ready():
     await client.change_presence(status = discord.Status.idle, activity = discord.Game("Listening to .help"))
@@ -18,15 +16,11 @@ async def on_ready():
 async def ping(ctx):
     await ctx.send(f"🏓 Pong with {str(round(client.latency, 2))}")
 
-@client.command(name="set")
-async def set_server_address(ctx, arg):
-    address = arg
-    await ctx.send(f"Server address set.")
-
 @client.command(name="status")
-async def server_status(ctx):
+async def server_status(ctx, arg):
+    address = arg
     if address == "":
-        await ctx.send(f"Server address not set. Use .set <address>.")
+        await ctx.send(f"Please provide a server address: .set <address>.")
     else:
         url = ''.join(['https://api.mcsrvstat.us/2/', address])
         response = requests.get(url=url)
